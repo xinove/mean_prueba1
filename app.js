@@ -45,29 +45,29 @@ var Todo = mongoose.model('Usuario', {
 /*Rutas de la web API*/ 
 //GET de todos los TODOs
 app.get('/api/todos', function(req, res) {                
- Todo.find(function(err, todos) {
+ Todo.find(function(err, nombre) {
      if(err) {
          res.send(err);
      }
-     res.json(todos);
+     res.json(nombre);
  });
 });
 
 //POST que crea un TODO y devuelve todos tras la creación
 app.post('/api/todos', function(req, res) {                
  Todo.create({
-     text: req.body.text,
+	 nombre: req.body.text,
      done: false
- }, function(err, todo){
+ }, function(err, nombre){
      if(err) {
          res.send(err);
      }
 
-     Todo.find(function(err, todos) {
+     Todo.find(function(err, nombre) {
          if(err){
              res.send(err);
          }
-         res.json(todos);
+         res.json(nombre);
      });
  });
 });
@@ -75,17 +75,17 @@ app.post('/api/todos', function(req, res) {
 //DELETE un TODO específico y devuelve todos tras borrarlo.
 app.del('/api/todos/:todo', function(req, res) {        
  Todo.remove({
-     _id: req.params.todo
- }, function(err, todo) {
+     _id: req.params.nombre
+ }, function(err, nombre) {
      if(err){
          res.send(err);
      }
 
-     Todo.find(function(err, todos) {
+     Todo.find(function(err, nombre) {
          if(err){
              res.send(err);
          }
-         res.json(todos);
+         res.json(nombre);
      });
 
  })

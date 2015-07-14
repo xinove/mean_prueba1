@@ -10,19 +10,20 @@
     <div class="container"> 
     <!--Cabecera-->
         <div class="jumbotron text-center">
-            <h1>Angular TODO List <span class="label label-info">{{ todos.length }}</span></h1>
+            <h1>Angular Lista de Usuarios <span class="label label-info">{{ usuarios.length }}</span></h1>
         </div>
         <!--Lista de Todos-->
         <div id="todo-list" class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <div class="checkbox" ng-repeat="todo in todos">
+                <div class="checkbox" ng-repeat="usuario in usuarios">
                     <label>
-                        <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }} 
+                        <input type="checkbox" ng-click="delTodo(usuario._id)"> {{ usuario.nombre }} 
                     </label>
                  </div>
              </div>
          </div>
-         <!--Formulario para insertar nuevos Todo-->             <div id="todo-form" class="row">
+         <!--Formulario para insertar nuevos Todo-->             
+         <div id="todo-form" class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
                     <div class="form-group">

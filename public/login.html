@@ -1,0 +1,101 @@
+<!doctype html>  
+<html lang="en" ng-app="angularTodo">  
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular TODO app</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+</head>  
+<body ng-controller="mainController">
+	<!-- wrapper -->
+
+		<div id="login" class="border-radius_top_bottom">
+		<form ng-controller="FrmController" id="form_login" name="form_login" action="" method="post" enctype="application/x-www-form-urlencoded">	
+			<div class="clear"></div>
+
+	            <ul>
+                    <li class="err" ng-repeat="error in errors"> {{ error}} </li>
+                </ul>
+                <ul>
+                    <li class="info" ng-repeat="msg in msgs"> {{ msg}} </li>
+                </ul>
+                		
+			<div class="login1 border-radius_top">
+				<p>Acceso al sistema</p>
+			</div>
+
+			<div class="login2">
+				
+				<section class="login_campos1">
+					<div class="campos">
+						<img id="img_user" src="html/images/usuario.png">
+						<label for="user">Nombre de usuario</label>
+						<input ng-model="username" id="username" type="text" placeholder="Su nombre de usuario">
+						<div class="clear"></div>
+					</div>
+				
+					<div class="campos">
+						<img id="img_pass" src="html/images/candado.png">
+						<label for="password">Contrase&ntilde;a</label>
+						<input ng-model="userpassword" type="password" placeholder="Su contrase&ntilde;a">
+						<div class="clear"></div>
+					</div>				
+
+				</section>
+
+				<section class="login_campos2">
+
+					<p>
+						<a href="#">Olvid&oacute; su contrase&ntilde;a?</a>
+					</p>
+			
+					<input ng-click='SignUp();' type="bottom" class="btn_login" value="Ingresar">
+
+				</section>
+
+			</div>
+			
+		</form>
+
+		</div>
+
+	
+	<!-- wrapper end -->
+        <script type="text/javascript">
+            function FrmController($scope, $http, $location) {
+                $scope.errors = [];
+                $scope.msgs = [];
+
+                $scope.SignUp = function() {
+
+                    $scope.errors.splice(0, $scope.errors.length); // remove all error messages
+                    $scope.msgs.splice(0, $scope.msgs.length);
+
+                    $http.post('login/login.php', {'user': $scope.username, 'password': $scope.userpassword}
+                    ).success(function(data, status, headers, config) {
+ 
+                        if (data.msg != '')
+                        {
+                            $scope.msgs.push(data.msg);
+
+                             :???:
+                            
+                           [B][COLOR="Red"] /*AQUI ES DONDE DESEO REDIRECCIONAR */[/COLOR][/B]
+                            
+                            $location.url("www.google.com/");
+                            //$window.location.href= "#operation";
+                            
+                        }
+                        else
+                        {
+                            $scope.errors.push(data.error);
+                        }
+                    }).error(function(data, status) { // called asynchronously if an error occurs
+// or server returns response with an error status.
+                        $scope.errors.push(status);
+                    });
+                }
+            }
+        </script>	
+</body>
+</html>  
