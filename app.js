@@ -73,19 +73,19 @@ app.post('/api/todos', function(req, res) {
 });
 
 //DELETE un TODO específico y devuelve todos tras borrarlo.
-app.del('/api/todos/:todo', function(req, res) {        
+app.del('/api/todos/:usuario', function(req, res) {        
  Todo.remove({
-     _id: req.params.nombre
- }, function(err, nombre) {
+     _id: req.params.usuario
+ }, function(err, usuario) {
      if(err){
          res.send(err);
      }
 
-     Todo.find(function(err, nombre) {
+     Todo.find(function(err, usuarios) {
          if(err){
              res.send(err);
          }
-         res.json(nombre);
+         res.json(usuarios);
      });
 
  })
@@ -93,9 +93,13 @@ app.del('/api/todos/:todo', function(req, res) {
 
 //Carga una vista HTML simple donde irá nuestra Single App Page
 //Angular Manejará el Frontend
-app.get('*', function(req, res) {                        
+app.get('/', function(req, res) {                        
  res.sendfile('./public/index.html');                
 });
+
+app.get('/users', function(req, res) {       
+	 res.sendfile('./public/login.html');                
+	});
 
 // Escucha en el puerto 8080 y corre el server
 app.listen(8080, function() {
@@ -107,10 +111,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
-/*
-app.get('/users', user.list);
+//app.get('/', routes.index);
+//app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-});*/
+});

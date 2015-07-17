@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Angular TODO app</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>  
 <body ng-controller="mainController">  
     <div class="container"> 
@@ -29,11 +29,23 @@
                     <div class="form-group">
                         <input type="text" class="form-control input-lg text-center" placeholder="Inserta una tarea nueva" ng-model="formData.text">
                     </div>
+                    
                     <button class="btn btn-primary btn-lg" ng-click="createTodo()">Añadir</button>
-                </form>
+                    <div ng-app="a	ngularTodo" ng-controller="login">
+						<button class="btn btn-primary btn-lg" ng-click="createNewUser()">Nuevo Usuario</button>
+					</div>
+                      </form>
+            </div>
+            
+            
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+	             <input type="text" laceholder="Inserta tú nombre" ng-model="nombre">
+	             Mi nombre es: {{nombre}}
             </div>
         </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> <script src="main.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js">
+     </script> <script src="main.js"></script>
 </body>  
 </html>  
