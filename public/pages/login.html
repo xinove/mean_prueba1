@@ -1,4 +1,8 @@
 <div class="jumbotron text-center">
-	<h1>Acerca De</h1>
-	<p>{{ message }}</p>
+	<form name="loginForm" novalidate>
+	  	Usuario:<input type="text" ng-model="model.usuario" name="usuario" required >
+	  	<br>
+	  	Contraseña:<input type="text" ng-model="model.password" name="password" required >
+	  	<br>
+  	</form>
 </div>

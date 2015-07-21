@@ -17,6 +17,10 @@ app.config(function($routeProvider) {
 			templateUrl : 'pages/prueba.html',
 			controller 	: 'pruebaController'
 		})
+		.when('/newUser', {
+			templateUrl : 'pages/newUser.html',
+			controller 	: 'newUserController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
@@ -28,6 +32,10 @@ app.controller('mainController', function($scope) {
 });
 
 app.controller('loginController', function($scope) {
+	$scope.message = 'Esta es la página "Acerca de"';
+});
+
+app.controller('newUserController', function($scope) {
 	$scope.message = 'Esta es la página "Acerca de"';
 });
 
