@@ -1,0 +1,40 @@
+ <div class="container"> 
+    
+    <!--Cabecera-->
+        <div class="jumbotron text-center">
+            <h1>Angular Lista de Usuarios <span class="label label-info">{{ usuarios.length }}</span></h1>
+        </div>
+        <!--Lista de Todos-->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="checkbox" ng-repeat="usuario in usuarios">
+                    <label>
+                        <input type="checkbox" ng-click="delTodo(usuario._id)"> {{ usuario.nombre }} 
+                    </label>
+                 </div>
+             </div>
+         </div>
+         
+         
+         <!--Formulario para insertar nuevos Todo-->             
+         <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Inserta una tarea nueva" ng-model="formData.text">
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg" ng-click="createTodo()">Añadir</button>
+                    
+						<button class="btn btn-primary btn-lg" ng-click="createNewUser()">Nuevo Usuario</button>
+					
+                      </form>
+            </div>
+            
+            
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+	             <input type="text" laceholder="Inserta tú nombre" ng-model="nombre">
+	             Mi nombre es: {{nombre}}
+            </div>
+        </div>
+    </div>

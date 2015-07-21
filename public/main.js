@@ -1,7 +1,41 @@
-//crearemos un modulo que será el que defina toda nuestra aplicación
-var app = angular.module('angularTodo', []);  
 
-app.controller('mainController', function($scope, $http) {
+var app = angular.module('aMasterizate', ['ngRoute']);
+
+// Configuración de las rutas
+app.config(function($routeProvider) {
+
+	$routeProvider
+		.when('/', {
+			templateUrl	: 'pages/home.html',
+			controller 	: 'mainController'
+		})
+		.when('/login', {
+			templateUrl : 'pages/login.html',
+			controller 	: 'loginController'
+		})
+		.when('/prueba', {
+			templateUrl : 'pages/prueba.html',
+			controller 	: 'pruebaController'
+		})
+		.otherwise({
+			redirectTo: '/'
+		});
+});
+
+
+app.controller('mainController', function($scope) {
+	$scope.message = 'Hola, Mundo!';
+});
+
+app.controller('loginController', function($scope) {
+	$scope.message = 'Esta es la página "Acerca de"';
+});
+
+app.controller('contactController', function($scope) {
+	$scope.message = 'Esta es la página de "Contacto", aquí podemos poner un formulario';
+});
+
+app.controller('pruebaController', function($scope, $http) {
     $scope.formData = {};
     // Cuando se cargue la página, pide del API todos los TODOs
     $http.get('/api/todos')
@@ -35,32 +69,7 @@ app.controller('mainController', function($scope, $http) {
         		//$log.log('Error:' + data);
             });
     };
+    
+    
 });
-	 
-  app.controller('login', function($scope, $http) {
-  $scope.message = 'PersonId = ' + $http.usuario;
-  
-  //Nos vamos al formulario para crear 
-  $scope.createNewUser = function(){
-     /* $http.post('/users', $scope.formData)
-          .success(function(data) {
-             // $scope.formData = {};
-              //$scope.usuarios = data;
-        	  //$log.log(JSON.stringify(data));
-          })
-          .error(function(data) {
-              //console.log('Error:' + data);
-          });*/
-      $http.get('/users')
-      .success(function(data) {
-          //$scope.usuarios = data;
-          //console.log(data)
-      })
-      .error(function(data) {
-          //console.log('Error: ' + data);
-      });
-  };
-  
-//Cuando se cargue la página, pide del API todos los Usuarios? no, no necesitas nada!
- 
-});
+	

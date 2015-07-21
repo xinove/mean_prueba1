@@ -8,6 +8,8 @@
   "dependencies": {
     "express": "3.2.6",
     "mongoose": "*",
-    "jade": "*"
+    "jade": "*",
+    "angular": "1.4.3",
+    "angular-route": "1.4.3"
   }
 }

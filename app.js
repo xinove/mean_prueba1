@@ -97,10 +97,6 @@ app.get('/', function(req, res) {
  res.sendfile('./public/index.html');                
 });
 
-app.get('/users', function(req, res) {       
-	 res.sendfile('./public/login.html');                
-	});
-
 // Escucha en el puerto 8080 y corre el server
 app.listen(8080, function() {
     console.log('App listening on port 8088');
@@ -110,9 +106,6 @@ app.listen(8080, function() {
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-//app.get('/', routes.index);
-//app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
